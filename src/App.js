@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import React, { useState } from 'react';
+// import ReactDOM from 'react-dom';
 import './App.css';
-
-function App() {
+import ButtonMinus from './components/buttonminus';
+import ButtonPlus from './components/buttonplus';
+import Seconds from './components/seconds';
+// 
+const App = (props) => {
+  const [minutes, setMinutes] = useState(0);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <ButtonMinus minutes={minutes} setMinutes={setMinutes} />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label class="lbl" for="minuteno">{`${minutes} Minute`}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <ButtonPlus minutes={minutes} setMinutes={setMinutes} />
       </header>
+      <div class="counter">
+        { minutes > 0 ? <Seconds minutes={minutes} setMinutes={setMinutes}/> : null}
+      </div>
     </div>
   );
 }
-
+// 
 export default App;
+// 
